@@ -8,7 +8,7 @@ Author : Dingyuan Cao, Yuzhong Wang
 
 We use Mongodb as database, so you should install `mongodb` first.
 
-Python3 is used in this project. You can see python requirements in `requirements.txt`, and use `pip3` to install them.
+Python3 is used in this project. You can see requirements for python in `requirements.txt`, and use `pip3` to install them.
 
 ## How to Run?
 
@@ -24,7 +24,7 @@ Run
 
 ### Terminal 2
 
-First, we need to build the database. Assume that your source data is at `${path}`, and all of them are unziped. Then you can:
+First, you need to build the database. Assume that your source data is at `${path}`, and all of them are unziped. Then you can:
 
 ```
 cd database
