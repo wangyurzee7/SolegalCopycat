@@ -1,6 +1,6 @@
 import json
 
-def init():
+def init(config):
     global a_data
     global c_data
     a_data=json.load(open("data/authoritative_data/0.json","r"))

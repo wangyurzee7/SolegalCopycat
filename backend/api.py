@@ -2,14 +2,23 @@
 # Author    :   Yazid Wong
 # Time      :   2020.05.17
 
-import backend.fake_backend as __bked__
+import json
+__bked__=None
 
 '''
 init()
 [ Description ] Init for backend.
 '''
-def init():
-    __bked__.init()
+def init(config_file="backend/config.json"):
+    config=json.load(open(config_file,"r"))
+    global __bked__
+    if "fake_backend" in config and config["fake_backend"]:
+        import backend.fake_backend
+        __bked__=backend.fake_backend
+        __bked__.init(config)
+    else:
+        from backend.backend import Backend
+        __bked__=Backend(config)
 
 '''
 search_authoritative(keyword, condition, ret_info, page, page_size)
