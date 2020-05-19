@@ -19,7 +19,7 @@ def get_xml_list(path):
 punctuation="。，、＇：∶；?‘’“”〝〞ˆˇ﹕︰﹔﹖﹑·¨….¸;！´？！～—ˉ｜‖＂〃｀@﹫¡¿﹏﹋﹌︴々﹟#﹩$﹠&﹪%*﹡﹢﹦﹤‐￣¯―﹨ˆ˜﹍﹎+=<­­＿_-\ˇ~﹉﹊（）〈〉‹›﹛﹜『』〖〗［］《》〔〕{}「」【】︵︷︿︹︽_﹁﹃︻︶︸﹀︺︾ˉ﹂﹄︼\n\r\t\"';:,<.>/?-_=+()*&^%$#@!`~"
 chinese={}
 unique_id=0
-stopwords=open("build/hit_stopwords.txt","r").read().split('\n')
+stopwords=open("../hit_stopwords.txt","r").read().split('\n')
 
 def parse_xml(file_name):
     try:
