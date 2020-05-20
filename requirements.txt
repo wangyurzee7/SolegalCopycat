@@ -1,3 +1,4 @@
 jieba
 bs4
 pymongo
+Django
