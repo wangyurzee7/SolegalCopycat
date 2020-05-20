@@ -9,6 +9,7 @@ meta_info_fields=[
     "LAND",
     "SPCX",
     "WSZL",
+    "AJLB",
 ]
 '''
 
@@ -27,6 +28,7 @@ class DbAgent:
         self.reverse_index_coll.delete_many({})
     
     def insert_document(self,doc):
+        doc.pop("tokens")
         self.documents_coll.insert(doc)
         '''
         if type(doc)==list:
@@ -54,6 +56,14 @@ class DbAgent:
     def get_document_by_id(self,unique_id):
         return self.documents_coll.find_one({"unique-id":unique_id},{"_id":0})
     
+    '''
+    def get_documents_by_id_list(self,id_list):
+        result=self.documents_coll.find_one({"unique-id":{"$in":id_list}},{"_id":0})
+        prior={unique_id:i for i,unique_id in enumerate(id_list)}
+        result.sort(key=lambda unique_id:prior[unique_id])
+        return result
+    '''
+
     def get_document_by_feature(self,features):
         return self.documents_coll.find_one(features,{"_id":0})
     

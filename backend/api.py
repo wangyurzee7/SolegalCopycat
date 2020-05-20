@@ -36,7 +36,7 @@ search_authoritative(keyword, condition, ret_info, page, page_size)
 [ Return Value ] A list, containing all search results' origin JSON object.
 '''
 def search_authoritative(keyword, condition, ret_info=None, page=1, page_size=20):
-    return __bked__.search_authoritative(keyword, condition, ret_info, page, page_size)
+    return __bked__.search_authoritative(keyword, condition, ret_info, int(page), page_size)
 
 '''
 search_common(keyword, condition, ret_info, page, page_size)
@@ -56,7 +56,7 @@ search_common(keyword, condition, ret_info, page, page_size)
 [ Return Value ] A list, containing all search results' origin JSON object.
 '''
 def search_common(keyword, condition, ret_info=None, page=1, page_size=20):
-    return __bked__.search_common(keyword, condition, ret_info, page, page_size)
+    return __bked__.search_common(keyword, condition, ret_info, int(page), page_size)
 
 '''
 get_authoritative_case_by_unique_id(unique_id)
