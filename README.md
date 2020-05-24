@@ -38,8 +38,10 @@ It will take a very very long time, so please be patient.
 Next, you can execute the following command to run your website:
 
 ```
-@cdy
+python3 manage.py runserver
 ```
+
+Then, run fronted.
 
 ## Report
 
