@@ -64,6 +64,9 @@ class DbAgent:
         result=list(self.documents_coll.find({"unique-id":{"$in":id_list}},{"_id":0}))
         prior={unique_id:i for i,unique_id in enumerate(id_list)}
         result.sort(key=lambda d:prior[d["unique-id"]])
+        for doc in result:
+            if "QW" not in doc:
+                doc["QW"]=doc["CPFXGC"]
         return result
 
     def get_document_by_feature(self,features):
