@@ -4,6 +4,7 @@
 
 from database.dbagent import DbAgent
 from utils.tokenization import tokenization
+import time
 
 import math
 
@@ -43,6 +44,7 @@ class Backend:
         self.rank_ensure_accurate=50
 
     def search(self, _type, keyword, condition, ret_info, page, page_size):
+        # print(time.time())
         keyword=keyword[:30]
         field_trans=self.field_trans[_type]
         curr_db=self.db_agent[_type]
@@ -53,6 +55,7 @@ class Backend:
                 cond[field_trans[k]]=v
 
         tokens=list(set(tokenization(keyword)))
+        # print(tokens)
         if not tokens:
             # no tokens
             id_arr=curr_db.get_ids_by_feature(cond)
@@ -151,11 +154,14 @@ class Backend:
                             continue
                         if ri[unique_id]<min_rank_50:
                 '''
-        
-        ret=[]
+        # print(time.time())
         id_arr=id_arr[:self.max_result_num]
+        ret=curr_db.get_documents_by_id_list(id_arr[(page-1)*page_size:page*page_size])
+        '''
+        ret=[]
         for unique_id in id_arr[(page-1)*page_size:page*page_size]:
             ret.append(curr_db.get_document_by_id(unique_id))
+        '''
         
         ret_info["total_pages"]=(len(id_arr)-1)//page_size+1
 
@@ -166,6 +172,7 @@ class Backend:
         else:
             ret_info["total_num"]="{}+".format(self.max_result_num-1)
             ret_info["condition"]=self.all_conditions[_type]
+        # print(time.time())
         return ret
 
     def search_authoritative(self, keyword, condition, ret_info=None, page=1, page_size=20):
