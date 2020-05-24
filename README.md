@@ -38,7 +38,7 @@ It will take a very very long time, so please be patient.
 Next, you can execute the following command to run your website:
 
 ```
-python3 manage.py runserver
+python3 manage.py runserver 8010
 ```
 
 Then, run fronted.

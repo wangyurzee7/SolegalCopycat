@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 
 import backend.api as backend
 import time
@@ -32,8 +33,11 @@ def search_authoritative(request):
     except:
         return render(request,"template.html",{"string":"Invalid Request."})
 
-    return render(request,"template.html",{"string":json.dumps(obj,ensure_ascii=False,indent=2)})
-
+    # return render(request,"template.html",{"string":json.dumps(obj,ensure_ascii=False,indent=2)})
+    resp = HttpResponse(json.dumps(obj,ensure_ascii=False,indent=2))
+    resp.__setitem__("Access-Control-Allow-Origin","*")
+    return resp
+    
 def search_common(request):
     start_time=time.time()
 
@@ -59,7 +63,10 @@ def search_common(request):
     except:
         return render(request,"template.html",{"string":"Invalid Request."})
 
-    return render(request,"template.html",{"string":json.dumps(obj,ensure_ascii=False,indent=2)})
+    # return render(request,"template.html",{"string":json.dumps(obj,ensure_ascii=False,indent=2)})
+    resp = HttpResponse(json.dumps(obj,ensure_ascii=False,indent=2))
+    resp.__setitem__("Access-Control-Allow-Origin","*")
+    return resp
 
 def detail_authoritative(request):
     try:
@@ -67,8 +74,10 @@ def detail_authoritative(request):
         obj=backend.get_authoritative_case_by_unique_id(unique_id)
     except:
         return render(request,"template.html",{"string":"Invalid Request."})
-    return render(request,"template.html",{"string":json.dumps(obj,indent=2,ensure_ascii=False)})
-
+    # return render(request,"template.html",{"string":json.dumps(obj,indent=2,ensure_ascii=False)})
+    resp = HttpResponse(json.dumps(obj,ensure_ascii=False,indent=2))
+    resp.__setitem__("Access-Control-Allow-Origin","*")
+    return resp
 
 def detail_common(request):
     try:
@@ -76,4 +85,7 @@ def detail_common(request):
         obj=backend.get_common_case_by_reference_number(reference_number)
     except:
         return render(request,"template.html",{"string":"Invalid Request."})
-    return render(request,"template.html",{"string":json.dumps(obj,indent=2,ensure_ascii=False)})
+    # return render(request,"template.html",{"string":json.dumps(obj,indent=2,ensure_ascii=False)})
+    resp = HttpResponse(json.dumps(obj,ensure_ascii=False,indent=2))
+    resp.__setitem__("Access-Control-Allow-Origin","*")
+    return resp
