@@ -184,6 +184,12 @@ class Backend:
 
     def search_common(self, keyword, condition, ret_info=None, page=1, page_size=20):
         try:
+            tmp=self.get_common_case_by_reference_number(keyword)
+            if tmp is not None:
+                ret_info["total_pages"]=1
+                ret_info["total_num"]=1
+                ret_info["condition"]=self.all_conditions["common"]
+                return [tmp]
             return self.search("common",keyword,condition,ret_info,page,page_size)
         except Exception as err:
             print(err)

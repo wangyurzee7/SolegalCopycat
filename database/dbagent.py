@@ -57,6 +57,10 @@ class DbAgent:
     def look_for_word(self,word):
         return self.reverse_index_coll.find_one({"keyword":word},{"_id":0,"keyword":0})
     
+    def fill_QW(self,doc):
+        if type(doc)==dict and "QW" not in doc:
+            doc["QW"]=doc["CPFXGC"]
+
     def get_document_by_id(self,unique_id):
         return self.documents_coll.find_one({"unique-id":unique_id},{"_id":0})
     
@@ -65,12 +69,13 @@ class DbAgent:
         prior={unique_id:i for i,unique_id in enumerate(id_list)}
         result.sort(key=lambda d:prior[d["unique-id"]])
         for doc in result:
-            if "QW" not in doc:
-                doc["QW"]=doc["CPFXGC"]
+            self.fill_QW(doc)
         return result
 
     def get_document_by_feature(self,features):
-        return self.documents_coll.find_one(features,{"_id":0})
+        ret=self.documents_coll.find_one(features,{"_id":0})
+        self.fill_QW(ret)
+        return ret
     
     def get_ids_by_feature(self,features):
         query={}
