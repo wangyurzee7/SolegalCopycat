@@ -88,6 +88,8 @@ def parse_xml(file_name):
 
             ret["QSAH"]=list(set(tmp["QSAH"])) if "QSAH" in tmp else [ret["AH"]]
 
+            ret["TITLE"]=tmp["AH"][0]
+
             ret["QW"]=tmp["QW"][0]
         except:
             return None

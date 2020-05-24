@@ -28,7 +28,11 @@ class DbAgent:
         self.reverse_index_coll.delete_many({})
     
     def insert_document(self,doc):
-        doc.pop("tokens")
+        if type(doc)==list:
+            for i in range(len(doc)):
+                doc[i].pop("tokens")
+        else:
+            doc.pop("tokens")
         self.documents_coll.insert(doc)
         '''
         if type(doc)==list:
