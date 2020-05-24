@@ -4,6 +4,8 @@ Coursework of Search Engine Technology and Practice.
 
 Author : Dingyuan Cao, Yuzhong Wang
 
+Fronted : https://github.com/Mockingjay1316/SolegalCopycat-frontend
+
 ## Requirements
 
 We use Mongodb as database, so you should install `mongodb` first.
