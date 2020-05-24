@@ -115,6 +115,12 @@ def get_authoritative_case_by_unique_id(unique_id):
             return d
     return None
 
+def get_common_case_by_unique_id(unique_id):
+    global c_data
+    for d in c_data:
+        if d["unique-id"]==unique_id:
+            return d
+    return None
 
 def get_common_case_by_reference_number(reference_number):
     global c_data

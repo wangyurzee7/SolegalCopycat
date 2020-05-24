@@ -4,6 +4,8 @@ Coursework of Search Engine Technology and Practice.
 
 Author : Dingyuan Cao, Yuzhong Wang
 
+Fronted : https://github.com/Mockingjay1316/SolegalCopycat-frontend
+
 ## Requirements
 
 We use Mongodb as database, so you should install `mongodb` first.
@@ -36,8 +38,10 @@ It will take a very very long time, so please be patient.
 Next, you can execute the following command to run your website:
 
 ```
-@cdy
+python3 manage.py runserver
 ```
+
+Then, run fronted.
 
 ## Report
 

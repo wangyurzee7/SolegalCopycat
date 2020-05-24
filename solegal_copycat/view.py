@@ -21,6 +21,7 @@ def search_authoritative(request):
                     tmp=list(tmp.split(','))
                 condition[k]=tmp
         page=request.GET["page"] if "page" in request.GET else 1
+        page=int(page)
         info={}
         result=backend.search_authoritative(keyword, condition, ret_info=info, page=page)
         obj={
@@ -47,6 +48,7 @@ def search_common(request):
                     tmp=list(tmp.split(','))
                 condition[k]=tmp
         page=request.GET["page"] if "page" in request.GET else 1
+        page=int(page)
         info={}
         result=backend.search_common(keyword, condition, ret_info=info, page=page)
         obj={

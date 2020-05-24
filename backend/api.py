@@ -69,6 +69,17 @@ def get_authoritative_case_by_unique_id(unique_id):
     return __bked__.get_authoritative_case_by_unique_id(unique_id)
 
 '''
+get_common_case_by_unique_id(unique_id)
+[ Description ] Get common case's origin JSON object by unique id.
+[ Params ]
+* unique_id : A string, the unique id, should be matched with field `unique-id`.
+[ Return Value ] A dict, result's origin JSON object. If there's no case matched, return None.
+'''
+def get_common_case_by_unique_id(unique_id):
+    return __bked__.get_common_case_by_unique_id(unique_id)
+
+
+'''
 get_common_case_by_reference_number(reference_number)
 [ Description ] Get common case's origin JSON object by reference number.
 [ Params ]
