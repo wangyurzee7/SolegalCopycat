@@ -76,7 +76,7 @@ class Backend:
                         id_arr.append(unique_id)
             else:
                 id_arr=list(filter(lambda x:x in reverse_index.keys(),valid_id_arr))
-                id_arr.sort(reverse=True,key=lambda unique_id:reverse_index[unique-id])
+                id_arr.sort(reverse=True,key=lambda unique_id:reverse_index[unique_id])
         else:
             # multiple tokens
             id_arr=[] # TODO
